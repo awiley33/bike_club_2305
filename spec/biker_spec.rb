@@ -40,8 +40,9 @@ describe Biker do
     @biker.log_ride(@ride1, 91.1)
     @biker.log_ride(@ride2, 60.9)
     @biker.log_ride(@ride2, 61.6)
-    
+
     expect(@biker.personal_record(@ride1)).to eq(91.1)
+    expect(@biker.personal_record(@ride2)).to eq(60.9)
   end
 
   # it "cannot log rides for terrains the biker has not yet learned" do
