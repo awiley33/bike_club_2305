@@ -11,12 +11,14 @@ describe Ride do
     expect(@ride1.name).to eq("Walnut Creek Trail")
     expect(@ride1.distance).to eq(10.7)
     expect(@ride1.terrain).to eq(:hills)
-    expect(@ride1.loop?).to eq(false)
   end
 
 
   it "can calculate the total distance accounting for loops" do
-
+    expect(@ride1.loop?).to eq(false)
+    expect(@ride1.total_distance).to eq(21.4)
+    expect(@ride2.loop?).to eq(true)
+    expect(@ride2.total_distance).to eq(14.9)
   end
 
 end
