@@ -42,10 +42,14 @@ describe BikeClub do
     @club1.add_biker(@biker2)
     @biker1.learn_terrain!(:gravel)
     @biker1.learn_terrain!(:hills)
-    @biker2.learn_terrain!(:gravel)
     @biker2.learn_terrain!(:hills)
-
+    
     expect(@club1.bikers_eligible(@ride1)).to eq([@biker1])
+    expect(@club1.bikers_eligible(@ride2)).to eq([@biker1])
+    
+    @biker2.learn_terrain!(:gravel)
+    
+    expect(@club1.bikers_eligible(@ride2)).to eq([@biker1, @biker2])
   end
 
   # it "can tell us which Biker has the best time for a given Ride" do
