@@ -24,4 +24,10 @@ class BikeClub
     end
     eligible
   end
+
+  def record_holder(ride)
+    @bikers.each do |biker|
+      biker.rides.min_by { |ride|   }
+    end
+  end
 end
