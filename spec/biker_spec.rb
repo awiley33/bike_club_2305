@@ -66,6 +66,11 @@ describe Biker do
   end
 
   it "will return false for personal records of rides it has not logged" do
+    @biker2.learn_terrain!(:gravel)
+    @biker2.learn_terrain!(:hills)
+    @biker2.log_ride(@ride1, 95.0)
+    @biker2.log_ride(@ride2, 65.0)
 
+    expect(@biker2.personal_record(@ride1)).to eq(false)
   end
 end
