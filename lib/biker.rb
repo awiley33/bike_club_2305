@@ -20,4 +20,8 @@ class Biker
     ride.record_time(time)
     @rides.store(ride, ride.times)
   end
+
+  def personal_record(ride)
+    @rides[ride].min
+  end
 end
