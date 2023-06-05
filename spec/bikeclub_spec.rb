@@ -52,7 +52,21 @@ describe BikeClub do
     expect(@club1.bikers_eligible(@ride2)).to eq([@biker1, @biker2])
   end
 
-  # it "can tell us which Biker has the best time for a given Ride" do
+  it "can tell us which Biker has the best time for a given Ride" do
+    @club1.add_biker(@biker1)
+    @club1.add_biker(@biker2)
+    @biker1.learn_terrain!(:gravel)
+    @biker1.learn_terrain!(:hills)
+    @biker2.learn_terrain!(:gravel)
+    @biker2.learn_terrain!(:hills)
+    @biker1.log_ride(@ride1, 92.5)
+    @biker1.log_ride(@ride1, 91.1)
+    @biker1.log_ride(@ride2, 60.9)
+    @biker1.log_ride(@ride2, 61.6)
+    @biker2.log_ride(@ride2, 65.0)
+    @biker2.log_ride(@ride2, 60.5)
 
-  # end
+    # expect(@club1.record_holder(@ride1).to eq(@biker1))
+    expect(@club1.record_holder(@ride2)).to eq(@biker2)
+  end
 end
