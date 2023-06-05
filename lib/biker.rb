@@ -7,11 +7,17 @@ class Biker
   def initialize(name, max_distance)
     @name = name
     @max_distance = max_distance
-    @rides = []
+    @rides = {}
     @acceptable_terrain = []
+
   end
 
   def learn_terrain!(terrain)
     @acceptable_terrain << terrain
+  end
+
+  def log_ride(ride, time)
+    ride.record_time(time)
+    @rides.store(ride, ride.times)
   end
 end
