@@ -38,7 +38,14 @@ describe BikeClub do
   end
 
   it "can tell us which Bikers are eligible for a given Ride. A Biker is eligible for a Ride if the terrain is acceptable to them and the total distance does not exceed their max distance" do
+    @club1.add_biker(@biker1)
+    @club1.add_biker(@biker2)
+    @biker1.learn_terrain!(:gravel)
+    @biker1.learn_terrain!(:hills)
+    @biker2.learn_terrain!(:gravel)
+    @biker2.learn_terrain!(:hills)
 
+    expect(@club1.bikers_eligible(@ride1)).to eq([@biker1])
   end
 
   # it "can tell us which Biker has the best time for a given Ride" do
