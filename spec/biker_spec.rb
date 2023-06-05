@@ -73,4 +73,20 @@ describe Biker do
 
     expect(@biker2.personal_record(@ride1)).to eq(false)
   end
+
+  it "can determine a biker's total rides" do
+    @biker.learn_terrain!(:gravel)
+    @biker.learn_terrain!(:hills)
+    @biker.log_ride(@ride1, 92.5)
+    @biker.log_ride(@ride1, 91.1)
+    @biker.log_ride(@ride2, 60.9)
+    @biker.log_ride(@ride2, 61.6)
+    @biker2.learn_terrain!(:gravel)
+    @biker2.learn_terrain!(:hills)
+    @biker2.log_ride(@ride1, 95.0)
+    @biker2.log_ride(@ride2, 65.0)
+
+    expect(@biker.total_rides).to eq(4)
+    expect(@biker2.total_rides).to eq(1)
+  end
 end
