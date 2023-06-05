@@ -10,4 +10,13 @@ describe Biker do
     expect(@biker.name).to eq("Kenny")
     expect(@biker.max_distance).to eq(30)
   end
+
+  it "starts with an empty acceptable terrains array and can learn new terrains" do
+    expect(@biker.acceptable_terrain).to eq([])
+
+    @biker.learn_terrain!(:gravel)
+    @biker.learn_terrain!(:hills)
+
+    expect(@biker.acceptable_terrain).to eq([:gravel, :hills])
+  end
 end
