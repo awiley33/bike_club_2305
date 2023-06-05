@@ -17,11 +17,19 @@ class Biker
   end
 
   def log_ride(ride, time)
-    ride.record_time(time)
-    @rides.store(ride, ride.times)
+    if @max_distance >= ride.total_distance
+      if @acceptable_terrain.include?(ride.terrain)
+        ride.record_time(time)
+        @rides.store(ride, ride.times)
+      end
+    end
   end
 
   def personal_record(ride)
-    @rides[ride].min
+    if @rides[ride]
+      @rides[ride].min
+    else
+      false
+    end
   end
 end
